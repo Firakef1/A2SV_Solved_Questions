@@ -10,4 +10,8 @@
 |  |
 | ------- |
 | [0056-merge-intervals](https://github.com/Firakef1/A2SV_Solved_Questions/tree/master/0056-merge-intervals) |
+## Math
+|  |
+| ------- |
+| [2469-convert-the-temperature](https://github.com/Firakef1/A2SV_Solved_Questions/tree/master/2469-convert-the-temperature) |
 <!---LeetCode Topics End-->
