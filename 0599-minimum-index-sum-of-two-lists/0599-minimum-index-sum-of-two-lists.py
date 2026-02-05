@@ -9,6 +9,8 @@ class Solution:
 
             for j in range(len(list2)):
                 if string == list2[j]:
+                    if i+j > least:
+                        break
                     if i+j < least:
                         least = i+j
                         arr.clear()
