@@ -9,4 +9,4 @@ class Solution:
             return 0
         
         memo[n] = self.fib(n-1) + self.fib(n-2)
-        return self.fib(n-1) + self.fib(n-2)
+        return self.fib(n-1, memo) + self.fib(n-2, memo)
