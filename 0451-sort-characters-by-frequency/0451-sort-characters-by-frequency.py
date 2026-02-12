@@ -1,4 +1,12 @@
 class Solution:
     def frequencySort(self, s: str) -> str:
-        s = sorted(s, key=lambda x:(-s.count(x), x) )
-        return "".join(s)
+
+        
+        count = Counter(s)
+
+        lis = list(map(str, s))
+
+        lis.sort(key=lambda x: (count[x], x), reverse=True)
+
+        return "".join(lis)
+        
