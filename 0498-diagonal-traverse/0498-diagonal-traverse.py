@@ -3,13 +3,13 @@ class Solution:
         group = defaultdict(list)
         output = [0]*(len(mat)*len(mat[0]))
 
-        for i in range(len(mat[0])):
-            for j in range(len(mat)):
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
                 group[i+j].append([i, j])
         
-        print(group)
+        # print(group)
         ptr = 0
-        order = True
+        order = False
         for key in group:
             arr = group[key]
             if order:
@@ -19,7 +19,7 @@ class Solution:
                 order = not order
             
             for i, j in arr:
-                output[ptr] = mat[j][i]
+                output[ptr] = mat[i][j]
                 ptr += 1
 
         return output
