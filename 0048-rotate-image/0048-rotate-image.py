@@ -17,19 +17,7 @@ class Solution:
                 #swap
                 matrix[i][j], matrix[inverse_i][inverse_j] = matrix[inverse_i][inverse_j], matrix[i][j]
                 swapped.add((inverse_i, inverse_j))
-                # swapped.add((i, j))
 
-        swapped = set()
-
-        for i in range(n):
-            for j in range(n):
-                if (i, j) in swapped:
-                    continue
-
-                inverse_i = n-i-1
-                matrix[i][j], matrix[inverse_i][j] = matrix[inverse_i][j], matrix[i][j]
-                swapped.add((inverse_i, j))
-                # swapped.add((i, j))
-
+        matrix.reverse()
                 
         
