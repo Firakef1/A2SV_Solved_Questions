@@ -12,9 +12,7 @@ class Solution:
                 continue
             else:
                 stack.append(elem)
-        ans = "/" + "/".join(stack)
-
-        return ans
+        return  "/" + "/".join(stack)
 
 
         
