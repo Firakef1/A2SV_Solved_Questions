@@ -3,7 +3,7 @@ class Solution:
 
         
         new = path.split("/")
-        stack = []
+        stack = deque()
         for i in range(0,len(new)):
             elem = new[i]
 
