@@ -9,22 +9,18 @@ class Solution:
             graph[one].append(two)
             graph[two].append(one)
         
-        print(graph)
-        
-        def dfs(node, target, visted=set()):
+        stack = deque([source])
+        visted = set([source])
 
-            if node == target:
+        while stack:
+            node = stack.pop()
+            if node == destination:
                 return True
             
-            visted.add(node)
-
-            for i in graph[node]:
-                if i not in visted:
-                    if dfs(i, target, visted):
-                        return True
-            
-            return False
-            
+            for elem in graph[node]:
+                if elem not in visted:
+                    visted.add(elem)
+                    stack.append(elem)
         
-        return dfs(source, destination)
-        
+        return False
+            
