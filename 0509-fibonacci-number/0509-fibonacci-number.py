@@ -1,12 +1,15 @@
 class Solution:
     def fib(self, n: int, memo = {}) -> int:
+
+        #base case
         if n in memo:
             return memo[n]
         
-        if n == 1:
-            return 1
-        elif n == 0:
-            return 0
+        #base case 
+        if n <= 2:
+            return 1 if n != 0 else 0
         
-        memo[n] = self.fib(n-1) + self.fib(n-2)
-        return self.fib(n-1, memo) + self.fib(n-2, memo)
+        #recurance relation and the step 
+        memo[n] = self.fib(n-1, memo)+self.fib(n-2, memo)
+
+        return memo[n]
