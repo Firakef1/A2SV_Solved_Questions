@@ -15,5 +15,5 @@ class Solution:
             else:
                 stack.append([n, i])
         
-        print(stack)
+        # print(stack)
         return new
