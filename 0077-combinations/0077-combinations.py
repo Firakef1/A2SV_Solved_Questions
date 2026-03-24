@@ -5,10 +5,11 @@ class Solution:
         nums = []
         def combination(lst, i, curr):
             nonlocal nums
-            if i == len(arr):
+            if len(curr) == k:
                 nums.append(curr)
                 return 
-            
+            if i == len(arr):
+                return
 
       
             combination(lst, i + 1, curr + [lst[i]])
@@ -18,5 +19,5 @@ class Solution:
 
 
         combination(arr, 0, [])
-        ans = [x for x in nums if len(x) == k]
-        return ans
+    
+        return nums
