@@ -1,19 +1,22 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
+        
+        arr = [x for x in range(1, n + 1)]
+        nums = []
+        def combination(lst, i, curr):
+            nonlocal nums
+            if i == len(arr):
+                nums.append(curr)
+                return 
+            
 
-        lis = []
-        def solve(j, k, arr = []):
-            # print(arr)
-            # print(len(arr), k)
+      
+            combination(lst, i + 1, curr + [lst[i]])
+
+            combination(lst, i + 1, curr)
             
-            if len(arr) == k:
-                lis.append(arr[:])
-                return
-            
-            for i in range(j,n+1):
-                arr.append(i)
-                solve(i+1, k, arr)
-                arr.pop()
-            
-        solve(1, k)
-        return lis
+
+
+        combination(arr, 0, [])
+        ans = [x for x in nums if len(x) == k]
+        return ans
