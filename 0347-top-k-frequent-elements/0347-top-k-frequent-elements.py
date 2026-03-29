@@ -1,15 +1,10 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
-        frequency = Counter(nums)
-        arr = []
-        for key in frequency:
-            arr.append([key, frequency[key]])
+        count = Counter(nums)
 
-        arr.sort(key= lambda x: -x[1])
+        count = count.most_common()
 
-        out = [0]*k
-        for i in range(k):
-            out[i] = arr[i][0]
+        out = [count[i][0] for i in range(k)]
 
         return out
