@@ -10,14 +10,10 @@ class Solution:
             graph[node[1]].append(node[0])
             value[node[0]] += 1
             value[node[1]] += 0
-        
 
         queue = deque([i for i in range(numCourses) if value[i] == 0])
 
-        while len(out) < numCourses:
-
-            if not queue:
-                return []
+        while queue:
 
             val = queue.popleft()
             out.append(val)
@@ -28,6 +24,9 @@ class Solution:
                     queue.append(i)
 
             
-        return out
+        if len(out) == numCourses:
+            return out
+        
+        return []
         
 
