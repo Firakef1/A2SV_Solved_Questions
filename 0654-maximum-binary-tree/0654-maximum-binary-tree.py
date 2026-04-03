@@ -8,11 +8,17 @@ class Solution:
     def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
         if not nums:
             return   
-                  
-        root = TreeNode()
-        root.val = max(nums)
+        
+        val = 0
+        index = 0
 
-        index = nums.index(max(nums))
+        for i, n in enumerate(nums):
+            if n > val:
+                val = n
+                index = i
+        
+        root = TreeNode(val)
+
         root.left = self.constructMaximumBinaryTree(nums[:index])
         root.right = self.constructMaximumBinaryTree(nums[index+1:])
 
