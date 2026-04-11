@@ -5,21 +5,37 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+
+   
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        arr = []
         
-        res = []
-
-        def dfs(node):
-
-            if not node:
-                return
+        def dfs(node, visted=set()):
             
-            nonlocal res
+            if not node:
+                return 
+            
+            nonlocal arr
+            
+            left = node.left
+            right = node.right
+            visted.add(node)
 
-            dfs(node.left)
-            res.append(node.val)
-            dfs(node.right)
+            if left:
+                if left not in visted:
+                    dfs(left, visted)
+
+            arr.append(node.val)
+
+            if right:
+                if right not in visted:
+                    dfs(right, visted)
+                        
+            
         
         dfs(root)
 
-        return res
+        return arr 
+        
+     
+        
