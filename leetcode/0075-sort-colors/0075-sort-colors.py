@@ -1,50 +1,50 @@
 class Solution:
-    def merge(self, nums, left, mid, right):
-
-        left_part = nums[left:mid]
-        right_part = nums[mid:right]
-
-        i = j = 0
-        k = left   
-
-
-        while i < len(left_part) and j < len(right_part):
-            if left_part[i] <= right_part[j]:
-                nums[k] = left_part[i]
-                i += 1
-            else:
-                nums[k] = right_part[j]
-                j += 1
-            k += 1
-
-
-        while i < len(left_part):
-            nums[k] = left_part[i]
-            i += 1
-            k += 1
-
-        while j < len(right_part):
-            nums[k] = right_part[j]
-            j += 1
-            k += 1
-
-
-    def merge_sort(self, nums, left, right):
-
-        if right - left < 2:
-            return
-
-        mid = (left + right) // 2
-
-        self.merge_sort(nums, left, mid)
-        self.merge_sort(nums, mid, right)
-
-        self.merge(nums, left, mid, right)
-        
-
     def sortColors(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-        self.merge_sort(nums, 0, len(nums))
+
+        def find_pivot(lis, start, end):
+            mid = (start + end) // 2
+            a, b, c = lis[start], lis[mid], lis[end]
+            
+            if (b <= a <= c) or (c <= a <= b):
+                return start
+            if (a <= b <= c) or (c <= b <= a):
+                return mid
+            return end
+
+
+        def partition(lis, start, end):
+            pivot_index = find_pivot(lis, start, end)
+            pivot_val = lis[pivot_index]
+            
+            lis[pivot_index], lis[start] = lis[start], lis[pivot_index]
+            
+            low = start + 1
+            high = end
+
+            while True:
+                while low <= high and lis[low] <= pivot_val:
+                    low += 1
+                while low <= high and lis[high] >= pivot_val:
+                    high -= 1
+                
+                if low <= high:
+                    lis[low], lis[high] = lis[high], lis[low]
+                else:
+                    break
+
+            lis[start], lis[high] = lis[high], lis[start]
+            return high
+
+
+        def quick_sort(lis, start, end):
+            if start < end:
+                p = partition(lis, start, end)
+                quick_sort(lis, start, p - 1)
+                quick_sort(lis, p + 1, end)
         
+
+        quick_sort(nums, 0, len(nums)-1)
+            
