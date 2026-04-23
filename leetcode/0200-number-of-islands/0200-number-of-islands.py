@@ -24,7 +24,7 @@ class Solution:
                 cur_col = col + direction[1]
 
                 if is_inbound(cur_row, cur_col, max_row, max_col):
-                    print(cur_row, cur_col)
+                    # print(cur_row, cur_col)
                     find_iland(cur_row, cur_col)
         
         count = 0
@@ -36,5 +36,5 @@ class Solution:
                     find_iland(i, j)
                     count += 1
         
-        print(seen)
+        # print(seen)
         return count
