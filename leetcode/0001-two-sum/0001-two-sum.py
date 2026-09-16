@@ -1,26 +1,26 @@
 class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
 
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        index_dict = defaultdict(list)
 
-        new_nums = sorted(nums)
+        for i, n in enumerate(nums):
+            index_dict[n].append(i)
+        
+        nums.sort()
 
-        left, right = 0, len(nums)-1
+        left = 0
+        right = len(nums)-1
 
         while left < right:
+            tot = nums[left]+nums[right]
+            if tot == target:
+                return [index_dict[nums[left]].pop(), index_dict[nums[right]].pop()]
 
-            number = new_nums[left]+new_nums[right]
-            if number == target:
-                if new_nums[left] == new_nums[right]:
-                    index_one = nums.index(new_nums[left])
-                    index_two = nums.index(new_nums[right], index_one+1)
-                    return [index_one, index_two]
-
-                return [nums.index(new_nums[left]), nums.index(new_nums[right])]
-
-            elif number < target:
+            elif tot < target:
                 left += 1
-                
             else:
-                right -= 1 
+                right -= 1
+        
+        return -1
 
-        return -1  
+        
