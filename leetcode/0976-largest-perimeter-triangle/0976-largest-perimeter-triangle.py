@@ -1,13 +1,14 @@
 class Solution:
     def largestPerimeter(self, nums: list[int]) -> int:
-        if len(nums) < 3:
-            return 0
+      
         nums.sort()
 
-        one, two, three = nums[-1], nums[-2], nums[-3]
 
-        if two+three > one:
-            return one+two+three
+        for i in range(len(nums)-1, 1, -1):
+
+            one, two, three = nums[i], nums[i-1], nums[i-2]
+
+            if two+three > one:
+                return one + two +three
         
-
-        return self.largestPerimeter(nums[:-1])
+        return 0
