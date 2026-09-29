@@ -1,18 +1,18 @@
 class Solution:
-    def largestPerimeter(self, nums: List[int]) -> int:
+    def largestPerimeter(self, nums: list[int]) -> int:
+        if len(nums) < 3:
+            return 0
+        
         nums.sort(reverse=True)
-        i = 0
 
-        while i < len(nums)-2:
+        one, two, three = nums[0], nums[1], nums[2]
 
-            one = nums[i]
-            two = nums[i+1]
-            three = nums[i+2]
+        if two+three > one:
+            return one+two+three
+        
 
-            if three + two > one:
-                return one+two+three
+        return self.largestPerimeter(nums[1:])
 
-            i += 1
-        return 0
-    
-    #6 3 3 2
+        
+
+
